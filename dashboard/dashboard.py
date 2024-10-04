@@ -30,36 +30,8 @@ with col2:
     st.write(filtered_data.describe())
 
     # Menampilkan dataframe yang sudah difilter
-    st.write("### Dataframe")
+    st.write("### DataFrame")
     st.dataframe(filtered_data)
-
-    # Menampilkan histogram jumlah penyewaan sepeda (cnt)
-    st.write("### Histogram Jumlah Penyewaan Sepeda")
-    fig, ax = plt.subplots()
-    ax.hist(filtered_data['cnt'], bins=20, color='skyblue', edgecolor='black')
-    plt.title("Distribusi Jumlah Penyewaan Sepeda")
-    plt.xlabel("Jumlah Penyewaan (cnt)")
-    plt.ylabel("Frekuensi")
-    st.pyplot(fig)
-
-    # Menampilkan scatter plot antara weathersit dan cnt
-    st.write("### Scatter Plot: Jumlah Penyewaan vs Kondisi Cuaca (Weathersit)")
-    filtered_data['cnt_quartile'] = pd.qcut(filtered_data['cnt'], 3, labels=['Rendah', 'Sedang', 'Tinggi'])
-    fig, ax = plt.subplots()
-    sns.scatterplot(x='weathersit', y='cnt', hue='cnt_quartile', data=filtered_data, ax=ax)
-    plt.title("Scatter Plot of Rental Count and Weather Situation")
-    plt.xlabel("Weather Situation")
-    plt.ylabel("Total Rental Count")
-    st.pyplot(fig)
-
-    # Menampilkan box plot untuk jumlah penyewaan (cnt) berdasarkan weathersit
-    st.write("### Box Plot: Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
-    fig, ax = plt.subplots()
-    sns.boxplot(x='weathersit', y='cnt', data=filtered_data, ax=ax)
-    plt.title("Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
-    plt.xlabel("Weather Situation")
-    plt.ylabel("Total Rental Count")
-    st.pyplot(fig)
 
     # Menampilkan line plot jumlah penyewaan per kondisi cuaca (weathersit)
     st.write("### Line Plot: Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
@@ -67,7 +39,27 @@ with col2:
     fig, ax = plt.subplots()
     ax.plot(weathersit_grouped['weathersit'], weathersit_grouped['cnt'], marker='o', color='skyblue')
     plt.title("Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
-    plt.xlabel("Weather Situation (Kondisi Cuaca)")
+    plt.xlabel("Kondisi Cuaca(Weathersit)")
     plt.ylabel("Jumlah Penyewaan (cnt)")
     ax.set_xticks([1, 2, 3])
     st.pyplot(fig)
+
+    # Menampilkan box plot untuk jumlah penyewaan (cnt) berdasarkan weathersit
+    st.write("### Box Plot: Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
+    fig, ax = plt.subplots()
+    sns.boxplot(x='weathersit', y='cnt', data=filtered_data, ax=ax)
+    plt.title("Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
+    plt.xlabel("Kondisi Cuaca(Weatherit)")
+    plt.ylabel("Jumlah Penyewaan")
+    st.pyplot(fig)
+    
+    # Menampilkan scatter plot antara weathersit dan cnt
+    st.write("### Scatter Plot: Jumlah Penyewaan vs Kondisi Cuaca (Weathersit)")
+    filtered_data['Jumlah Penyewaan'] = pd.qcut(filtered_data['cnt'], 3, labels=['Rendah', 'Sedang', 'Tinggi'])
+    fig, ax = plt.subplots()
+    sns.scatterplot(x='weathersit', y='cnt', hue='Jumlah Penyewaan', data=filtered_data, ax=ax)
+    plt.title("Scatter Plot dari Jumlah Penyewaan dan Kondisi Cuaca (Weathersit)")
+    plt.xlabel("Kondisi Cuaca (Weathersit)")
+    plt.ylabel("Total Jumlah Penyewaan")
+    st.pyplot(fig)
+
