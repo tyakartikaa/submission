@@ -5,7 +5,7 @@ import seaborn as sns
 from datetime import datetime
 
 # Membaca file CSV
-df = pd.read_csv("dashboard/daydashboard.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/tyakartikaa/submission/main/dashboard/daydashboard.csv")
 
 # Mengatur judul dashboard
 st.title("Bike Sharing Dashboard")
