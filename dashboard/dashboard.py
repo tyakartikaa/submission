@@ -32,7 +32,15 @@ with col2:
     # Menampilkan dataframe yang sudah difilter
     st.write("### DataFrame")
     st.dataframe(filtered_data)
-
+    
+    # Menambahkan keterangan sebelum visualisasi weathersit
+    st.write("### Keterangan Kondisi Cuaca (Weathersit)")
+    st.markdown("""
+    1: bersih, sedikit awan, berawan sebagian
+    2: kabut+berawan, kabut+awan pecah, kabut+sedikit berawan, kabut
+    3: salju ringan, hujan ringan+badai petir+awan tersebar, hujan ringan+awan tersebar
+    """)
+    
     # Menampilkan line plot jumlah penyewaan per kondisi cuaca (weathersit)
     st.write("### Line Plot: Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
     weathersit_grouped = filtered_data.groupby('weathersit').cnt.sum().reset_index()
