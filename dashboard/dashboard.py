@@ -15,18 +15,18 @@ st.title("Bike Sharing Dashboard")
 st.sidebar.header("Filter Rentang Tanggal")
 
 # Rentang tanggal untuk day_df
-st.sidebar.write("### Rentang Tanggal untuk Day Dashboard")
-start_date_day = st.sidebar.date_input("Pilih Tanggal Mulai (Day Dashboard)", datetime(2011, 1, 1))
-end_date_day = st.sidebar.date_input("Pilih Tanggal Akhir (Day Dashboard)", datetime(2012, 12, 31))
+st.sidebar.write("### Rentang Tanggal untuk daydashboard")
+start_date_day = st.sidebar.date_input("Pilih Tanggal Mulai (daydashboard)", datetime(2011, 1, 1))
+end_date_day = st.sidebar.date_input("Pilih Tanggal Akhir (daydashboard)", datetime(2012, 12, 31))
 
 # Filter data day_df berdasarkan rentang tanggal yang dipilih
 day_df['dteday'] = pd.to_datetime(day_df['dteday'])
 filtered_day_df = day_df[(day_df['dteday'] >= pd.to_datetime(start_date_day)) & (day_df['dteday'] <= pd.to_datetime(end_date_day))]
 
 # Rentang tanggal dan waktu untuk hour_df
-st.sidebar.write("### Rentang Tanggal dan Waktu untuk Hour Dashboard")
-start_date_hour = st.sidebar.date_input("Pilih Tanggal Mulai (Hour Dashboard)", datetime(2011, 1, 1))
-end_date_hour = st.sidebar.date_input("Pilih Tanggal Akhir (Hour Dashboard)", datetime(2012, 12, 31))
+st.sidebar.write("### Rentang Tanggal dan Waktu untuk hourdashboard")
+start_date_hour = st.sidebar.date_input("Pilih Tanggal Mulai (hourdashboard)", datetime(2011, 1, 1))
+end_date_hour = st.sidebar.date_input("Pilih Tanggal Akhir (hourdashboard)", datetime(2012, 12, 31))
 start_hour = st.sidebar.slider("Pilih Jam Mulai", 0, 23, 0)
 end_hour = st.sidebar.slider("Pilih Jam Akhir", 0, 23, 23)
 
@@ -37,14 +37,14 @@ filtered_hour_df = hour_df[(hour_df['dteday_hr'] >= pd.to_datetime(start_date_ho
                            (hour_df['hr_hr'] >= start_hour) & (hour_df['hr_hr'] <= end_hour)]
 
 # Tampilan utama di halaman utama (bukan sidebar)
-st.write("## 1. Dataset (day_df)")
+st.write("## 1. Dataset (daydashboard)")
 
 # Menampilkan informasi dataset yang sudah difilter
-st.write(f"### Informasi Dataset (day_df) dari {start_date_day} hingga {end_date_day}")
+st.write(f"### Informasi Dataset (daydashboard) dari {start_date_day} hingga {end_date_day}")
 st.write(filtered_day_df.describe())
 
 # Menampilkan dataframe yang sudah difilter
-st.write("### DataFrame (day_df) yang Sudah Difilter")
+st.write("### DataFrame (daydashboard) yang Sudah Difilter")
 st.dataframe(filtered_day_df)
 
 # Menampilkan line plot jumlah penyewaan per kondisi cuaca (weathersit)
@@ -84,14 +84,14 @@ ax.set_xticks([1, 2, 3, 4])
 ax.set_xticklabels(['Cerah', 'Berkabut', 'Hujan', 'Ekstrem'])
 st.pyplot(fig)
 
-st.write("## 2. Dataset (hour_df)")
+st.write("## 2. Dataset (hourdashboard)")
 
 # Menampilkan beberapa informasi dasar tentang dataset yang sudah difilter
-st.write(f"### Informasi Dataset (hour_df) dari {start_date_hour} hingga {end_date_hour} dan jam {start_hour} hingga {end_hour}")
+st.write(f"### Informasi Dataset (hourdashboard) dari {start_date_hour} hingga {end_date_hour} dan jam {start_hour} hingga {end_hour}")
 st.write(filtered_hour_df.describe())
 
 # Menampilkan dataframe yang sudah difilter
-st.write("### DataFrame (hour_df) yang Sudah Difilter")
+st.write("### DataFrame (hourdashboard) yang Sudah Difilter")
 st.dataframe(filtered_hour_df)
 
 # Menampilkan line chart jumlah penyewaan per jam
