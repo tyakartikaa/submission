@@ -39,7 +39,7 @@ with col2:
     fig, ax = plt.subplots()
     ax.plot(weathersit_grouped['weathersit'], weathersit_grouped['cnt'], marker='o', color='skyblue')
     plt.title("Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
-    plt.xlabel("Kondisi Cuaca(Weathersit)")
+    plt.xlabel("Kondisi Cuaca (Weathersit)")
     plt.ylabel("Jumlah Penyewaan (cnt)")
     ax.set_xticks([1, 2, 3])
     st.pyplot(fig)
@@ -49,7 +49,7 @@ with col2:
     fig, ax = plt.subplots()
     sns.boxplot(x='weathersit', y='cnt', data=filtered_data, ax=ax)
     plt.title("Jumlah Penyewaan Sepeda Berdasarkan Kondisi Cuaca (Weathersit)")
-    plt.xlabel("Kondisi Cuaca(Weatherit)")
+    plt.xlabel("Kondisi Cuaca (Weatherit)")
     plt.ylabel("Jumlah Penyewaan")
     st.pyplot(fig)
     
